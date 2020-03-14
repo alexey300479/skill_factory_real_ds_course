@@ -1,0 +1,13 @@
+@charset "windows-1251";
+
+.superscreen_wrap {background: #f2f2f2; width: 850px; position: relative; z-index: 10}
+.superscreen_wrap table {width: 850px; border-collapse: collapse; position: absolute; top: 0; left: 0; z-index: 5}
+.superscreen_wrap * {list-style: none; margin: 0; padding: 0}
+.superscreen_wrap .link {width: 850px; height: 100%; display: block; position: absolute; top: -5px; left: 0; z-index: 820}
+.superscreen_wrap .list {background: #fff; width: 100%; left: 0}
+   .superscreen_wrap .list ul {background: #fff url(/images/corner-main.gif) 564px 0 no-repeat; width: 580px; height: 16px; font-size: 10px; overflow: hidden}
+   .superscreen_wrap .list li {background: url(/images/bullet.gif) 0 6px no-repeat; width: 167px; color: #f60; float: left; margin: 0 5px 0 11px; padding-left: 9px}
+   .superscreen_wrap .list li.center {margin-right: 4px}
+   .superscreen_wrap .list li a {color: #f60; text-decoration: underline}
+   .superscreen_wrap .list li a:hover {text-decoration: none}
+   .superscreen_wrap .list span {background: #999; width: 564px; height: 1px; overflow: hidden; clear: both; display: block}

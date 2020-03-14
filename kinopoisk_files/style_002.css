@@ -1,0 +1,82 @@
+@charset "windows-1251";
+
+#top .menu p {font-size: 10px}
+#top .menu a, #top .menu span {font-size: 9px}
+#bottom .menu p {font-size: 10px}
+#bottom .menu a, #bottom .menu span {font-size: 9px}
+#bottom .icons, #bottom .copyright, #bottom .links, #bottom .adv {font-size: 10px}
+#bottom .icons .main s {left: 10px}
+#bottom .icons .round s {left: 6px}
+#bottom .icons .advert s {left: 17px}
+#block_right .block_board dd span {right: 6px}
+#block_right .block_board dd span a {font-size: 10px}
+#block_right .block_tv form span {right: 18px !important}
+#block_right .block_tv form span a {font-size: 10px !important; left: 18px !important}
+#block_right .block .more, #block_right .block .more * {font-size: 9px !important}
+#block_right .block dt {height: 20px; font-size: 10px; padding-top: 18px}
+
+.insert * {font-size: 9px !important}
+.rssLink {font-size: 10px}
+.rssLink s {top: 0}
+
+.film_menu {font-size: 10px} /* film, actor */
+.boardPR {font-size: 10px !important}
+/* .select {font-size: 10px}
+.select .title {height: 16px !important; padding-top: 5px !important}
+.select .list s {top: 3px !important}
+.block_add.extended .select .button {padding-top: 4px !important} */
+.block1 .rating_title {font-size: 10px}
+.block1 .movie_closers {margin-top: 1px}
+.block_2 .div1 {font-family: tahoma, verdana, helvetica; font-size: 23px}
+.block3 .about {padding-top: 1px; padding-bottom: 3px}
+.block3 .about a {font-size: 10px}
+.block3 .div1 span {font-family: tahoma, verdana, helvetica; font-size: 19px !important}
+.criticsRating .ratingNum .num {font-size: 23px !important}
+.criticsRating .about {font-size: 10px; padding: 1px 0 3px 0}
+.ipad_report {font-size: 10px}
+.inLists2 .list dt {padding-top: 1px}
+
+.add_to dt {font-size: 10px} /* news... */
+.moreBlock .more {font-size: 10px}
+
+.folderStatus .button {font-size: 10px} /* profile */
+#folderList {font-size: 10px}
+dl.genres, dl.genres * {font-size: 10px}
+.dropper .countries {font-size: 10px}
+.dropper .imdb {font-size: 10px}
+#delete_selected {font-size: 10px}
+.messages .buttons .button {font-size: 10px}
+.message .buttons .button {font-size: 10px}
+small.mykp {font-size: 9px}
+.fontsize9 {font-size: 9px}
+.fontsize10 td {font-size: 10px}
+.fontsize11 td {font-size: 11px}
+.selectBox-dropdown {font-size: 20px !important}
+.await span {font-size: 10px}
+
+.searchGrayBorder .request {top: 64px !important} /* search results */
+@-moz-document url-prefix() {.searchGrayBorder .request {top: 67px !important} .searchGrayBorder .gradient {top: 1px !important}}
+
+.moviename-big {font-size: 23px !important} /* advanced search */
+
+.therm div .fb {top: 0; left: 180px} /* around kp */
+.therm div .tw {top: -2px; left: 179px}
+.therm div .vk {top: 4px; left: 180px}
+.therm div .widgets {top: 0; left: 179px}
+
+.td_tv_star .rating {font-family: tahoma, verdana, arial; font-size: 10px} /* tv */
+.print_v {font-size: 10px; padding-bottom: 2px}
+.tune_chnl {font-size: 10px}
+
+.myBoardButton {font-size: 10px} /* board */
+.myBoardButton a {height: 18px !important; padding-top: 4px !important}
+.afishaInside b {font-size: 10px}
+.afishaInside .onMap {font-size: 10px}
+.cinema.all {font-size: 13px}
+.yandex ul * {font-size: 9px}
+
+.coming_films {font-size: 10px !important} /* coming films */
+
+.stat .el b {padding-top: 1px} /* popularity */
+.stat .el b a {font-size: 11px !important}
+.stat .el u {font-size: 10px}
