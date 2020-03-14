@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spam or Not Spam Dataset | Kaggle</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="A collection of emails taking from spamassassin.apache.org " />
+    <meta name="turbolinks-cache-control" content="no-cache" />
+        <meta name="keywords" content="computing,email and messaging,binary classification" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#008ABC" />
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript">
+        window["initialPageLoadStartTime"] = new Date().getTime();
+    </script>
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" /><link rel="preconnect" href="https://stats.g.doubleclick.net" /><link rel="preconnect" href="https://js.intercomcdn.com" /><link rel="preconnect" href="https://storage.googleapis.com" /><link rel="preconnect" href="https://apis.google.com" /><link rel="preload" href="/static/assets/fontawesome-webfont.woff2" as="font" crossorigin="anonymous" />
+    <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="manifest" href="/static/json/manifest.json" crossorigin="use-credentials">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic" rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Google+Material+Icons" rel="stylesheet" type='text/css' />
+        <link rel="stylesheet" type="text/css" href="/static/assets/vendor.css?v=3091c404ef1de61ee968" />
+        <link rel="stylesheet" type="text/css" href="/static/assets/app.css?v=7347f48563b0202d54f6" />
+    
+    
+ 
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==">
+        try{(function(a,s,y,n,c,h,i,d,e){d=s.createElement("style");
+        d.appendChild(s.createTextNode(""));s.head.appendChild(d);d=d.sheet;
+        y=y.map(x => d.insertRule(x + "{ opacity: 0 !important }"));
+        h.start=1*new Date;h.end=i=function(){y.forEach(x => x<d.cssRules.length ? d.deleteRule(x) : {})};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document,['.site-header-react__nav'],'dataLayer',2000,{'GTM-52LNT9S':true});}catch(ex){}
+    </script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-12629138-1', {
+            'optimize_id': 'GTM-52LNT9S',
+            'displayFeaturesTask': null,
+            'send_page_view': false
+        });
+    </script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" async src="https://www.googletagmanager.com/gtag/js?id=UA-12629138-1"></script>
+
+<script nonce="r22ki5hLl0HJGMGKa4b99A==">window.intercomSettings = {"app_id":"koj6gxx6","name":"Alexey Kiselev","email":"alexey300479@gmail.com","user_hash":"8d8ef050a02eaea4e499af950808579be1901fe5975fd1ae216dfa555a431395","created_at":1565717537,"last_visit_date_at":1583743608,"status_id":2,"performance_tier":1,"user_name":"alexey300479","display_name":"Alexey Kiselev","is_admin":false,"experiment_group":1,"newsletter_subscriber":true,"competition_mailing_list_subscriber":true,"block_emails":false,"competitions_tier":1,"competitions_tier_attained_at":1580200007,"kernels_tier":1,"kernels_tier_attained_at":1580200007,"discussion_tier":1,"discussion_tier_attained_at":1580200007,"datasets_count":0,"host_page_visits":0,"in_class_competitions_hosted_count":0,"last_hour_searches_count":0,"api_has_token":true,"api_has_requests":true,"api_token_created":1582471970,"api_last_request":1582472328};</script>        <script nonce="r22ki5hLl0HJGMGKa4b99A==">(function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else { var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/koj6gxx6'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })()</script>
+    
+    
+        <meta property="og:url" content="https://kaggle.com/ozlerhakan/spam-or-not-spam-dataset" />
+        <meta property="og:title" content="Spam or Not Spam Dataset" />
+        <meta property="og:description" content="A collection of emails taking from spamassassin.apache.org " />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-card.jpg?t=2018-12-14-18-43-36" />
+        <meta property="fb:app_id" content="2665027677054710" />
+
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@kaggledatasets" />
+    
+
+    
+    
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==" type="application/ld+json">{"@context":"http://schema.org/","@type":"Dataset","name":"Spam or Not Spam Dataset","description":"### Context\n\nThe collection consists of '0030228_easy_ham.tar.bz2' and '20030228_spam.tar.bz2' taking from https://spamassassin.apache.org/old/publiccorpus/ i.e. _Apache SpamAssassin’s public datasets_.  There are 2500 ham and 500 spam emails in the dataset. You may also notice that all the numbers and URLs were converted to strings as  `NUMBER` and `URL`  respectively.  This is the simplified spam and ham dataset.\n\n### Acknowledgements\n\nMy first interaction about the content was on the 'Machine Learning and Deep Learning in python using Scikit-Learn and TensorFlow' book. If you follow the questions at the end of Chapter 3, Aurélien Geron asks you to build a spam classifier using this dataset. Thanks to Aurélien, I was familiar with the data itself and tried several models including Embeddings and Machine Learning Algorithms. \n","url":"https://www.kaggle.com/ozlerhakan/spam-or-not-spam-dataset","sameAs":"","version":1,"keywords":["technology and applied sciences, computing","technology and applied sciences, computing, internet, email and messaging","problem type, binary classification"],"license":{"@type":"CreativeWork","name":"Other (specified in description)","url":""},"identifier":["91827"],"includedInDataCatalog":{"@type":"DataCatalog","name":"Kaggle","url":"https://www.kaggle.com"},"creator":{"@type":"Person","name":"Hakan Ozler","url":"https://www.kaggle.com/ozlerhakan","image":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1551213-gr.jpg"},"distribution":[{"@type":"DataDownload","requiresSubscription":true,"encodingFormat":"zip","fileFormat":"zip","contentUrl":"https://www.kaggle.com/ozlerhakan/spam-or-not-spam-dataset/download","contentSize":"4256112 bytes"},{"@type":"DataDownload","requiresSubscription":true,"encodingFormat":"csv","fileFormat":"csv","contentUrl":"https://www.kaggle.com/ozlerhakan/spam-or-not-spam-dataset/download/HqbK5W1EpoAqZ6IeMuWx%2Fversions%2Fu8meS80aEBYjvv7itnBL%2Ffiles%2Fspam_or_not_spam.csv?datasetVersionNumber=1","contentSize":"4256112 bytes"}],"commentCount":0,"dateModified":"2018-12-14T18:32:01.29","discussionUrl":"https://www.kaggle.com/ozlerhakan/spam-or-not-spam-dataset/discussion","alternateName":"A collection of emails taking from spamassassin.apache.org ","isAccessibleForFree":true,"thumbnailUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-card.jpg?t=2018-12-14-18-43-36","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"http://schema.org/CommentAction","userInteractionCount":0},{"@type":"InteractionCounter","interactionType":"http://schema.org/DownloadAction","userInteractionCount":947},{"@type":"InteractionCounter","interactionType":"http://schema.org/ViewAction","userInteractionCount":5404},{"@type":"InteractionCounter","interactionType":"http://schema.org/LikeAction","userInteractionCount":10}]}</script>
+    
+
+    
+    
+    
+<script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript">
+    var Kaggle = Kaggle || {};
+
+    Kaggle.Current = {
+        userId: 3578092,
+        userProfileUrl: '/alexey300479',
+        userDisplayNameEscaped: 'Alexey Kiselev',
+        userThumbnailUrl: 'https://storage.googleapis.com/kaggle-avatars/thumbnails/3578092-kg.png',
+        userEmail: 'alexey300479@gmail.com',
+        userIsPhoneVerified: true,
+        userName: 'alexey300479',
+        tier: 'Contributor',
+        antiForgeryToken: 'CfDJ8LdUzqlsSWBPr4Ce3rb9VL8SdpdhDKr1IkpTXexeSi2GiHLNbqDI062QhfWLz5-fnCUKm0j5FBmWrDJQ2liOXO0Ee8QmiUsuNUsPxefKIjv4nxJXFFZA186q5iBvY4_Gjl720GFiPJlrnZJxrMay7ffp3KwlsyqEqbMm-C64nm-eLD9UF8zuGm2dYxaoJ5dvPw',
+        isAnonymous: false,
+        analyticsToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODM3NDQ1MDksIlVzZXJJZCI6MzU3ODA5Mn0.08A1723_D-IU_24u0Gg9yZAB2ZVmvF9MoJhIV8SNEXc',
+        analyticsTokenExpiry: 15,
+        internetKernelsEnabled: true,
+        
+        
+        
+        
+        
+        
+        mdeImageUploader: true,
+        
+        
+        
+    }
+        Kaggle.Current.log = function(){};
+        Kaggle.Current.warn = function(){};
+
+    var decodeUserDisplayName = function () {
+        var escapedUserDisplayName = Kaggle.Current.userDisplayNameEscaped || "";
+        try {
+            var textVersion = new DOMParser().parseFromString(escapedUserDisplayName, "text/html").documentElement.textContent;
+            if (textVersion) {
+                return textVersion;
+            }
+        } catch(ex) {}
+        return escapedUserDisplayName;
+    }
+    Kaggle.Current.userDisplayName = decodeUserDisplayName();
+</script>
+
+    
+
+<script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript">
+    var Kaggle = Kaggle || {};
+    Kaggle.PageMessages = [];
+</script>
+
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript">
+/* <![CDATA[ */
+goog_snippet_vars = function() {
+    var w = window;
+    w.google_conversion_id = 955616553;
+    w.google_conversion_label = "QSjvCKDksHMQqZrWxwM";
+    w.google_conversion_value = 0.00;
+    w.google_conversion_currency = "USD";
+    w.google_remarketing_only = false;
+    w.google_conversion_language = "en";
+    w.google_conversion_format = "3";
+    w.google_conversion_color = "ffffff";
+}
+// DO NOT CHANGE THE CODE BELOW.
+goog_report_conversion = function(url) {
+    goog_snippet_vars();
+    window.google_conversion_format = "3";
+    var opt = new Object();
+    opt.onload_callback = function() {
+        if (typeof(url) != 'undefined') {
+            window.location = url;
+        }
+    }
+    var conv_handler = window['google_trackConversion'];
+    if (typeof(conv_handler) == 'function') {
+        conv_handler(opt);
+    }
+}
+/* ]]> */
+    </script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript"
+            src="//www.googleadservices.com/pagead/conversion_async.js">
+    </script>
+
+
+
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==">window['useKaggleAnalytics'] = true;</script>
+
+    <script id="gapi-target" nonce="r22ki5hLl0HJGMGKa4b99A==" src="https://apis.google.com/js/api.js" defer async></script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" src="/static/assets/runtime.js?v=9531a7172ab8450e4a91" data-turbolinks-track="reload"></script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" src="/static/assets/vendor.js?v=ab7796cbfb64e20324f1" data-turbolinks-track="reload"></script>
+    <script nonce="r22ki5hLl0HJGMGKa4b99A==" src="/static/assets/app.js?v=299500d79ef908d71279" data-turbolinks-track="reload"></script>
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==">
+            (function() {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register("/static/assets/service-worker.js").then(function(reg) {
+                        reg.onupdatefound = function() {
+                            var installingWorker = reg.installing;
+                            installingWorker.onstatechange = function() {
+                                switch (installingWorker.state) {
+                                case 'installed':
+                                    if (navigator.serviceWorker.controller) {
+                                        console.log('New or updated content is available.');
+                                    } else {
+                                        console.log('Content is now available offline!');
+                                    }
+                                    break;
+                                case 'redundant':
+                                    console.error('The installing service worker became redundant.');
+                                    break;
+                                }
+                            };
+                        };
+                    }).catch(function(e) {
+                      console.error('Error during service worker registration:', e);
+                    });
+                }
+            })();
+        </script>
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==" defer src="https://cdn.jsdelivr.net/npm/stackdriver-errors-js@0.7.0/dist/stackdriver-errors-concat.min.js"></script>
+        <script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript">
+            window.addEventListener('DOMContentLoaded', function () {
+                var errorHandler = new StackdriverErrorReporter();
+                errorHandler.start({
+                    key: 'AIzaSyDANGXFHtSIVc51MIdGwg4mQFgm3oNrKoo',
+                    projectId: 'kaggle-161607',
+                    service: 'web-fe',
+                    version: '3c4be2b09d03460e45e955b6f3f836cc8393e3a5',
+                    context: {
+                        user: '3578092',
+                    },
+                });
+            });
+        </script>
+</head>
+<body data-turbolinks="false">
+    <main>
+        
+
+
+
+
+
+
+<div id="site-container"></div>
+<div data-component-name="NavigationContainer" style="display: flex; flex-direction: column; flex: 1 0 auto;"></div><script nonce="r22ki5hLl0HJGMGKa4b99A==">var Kaggle=window.Kaggle||{};Kaggle.State=Kaggle.State||[];Kaggle.State.push({"isTopNavigation":false});performance && performance.mark && performance.mark("NavigationContainer.componentCouldBootstrap");</script>
+<div id="site-body" class="hide">
+    
+
+
+<div data-component-name="DatasetContainer" style="display: flex; flex-direction: column; flex: 1 0 auto;"></div><script nonce="r22ki5hLl0HJGMGKa4b99A==">var Kaggle=window.Kaggle||{};Kaggle.State=Kaggle.State||[];Kaggle.State.push({"scripts":[],"discussions":[],"pageMessages":[],"discussion":{"canDownvote":true,"dataUrl":"/forums/101439/topics.json","id":101439,"isRootLevel":false,"showSubscribeButton":false,"isSubscribed":false,"subscription":"unsubscribe","initialTopics":null,"paramValues":{"category":"all","page":1,"search":null,"group":"all","sortBy":"hot"}},"currentTab":"home","newTopic":{"allowAttachments":true,"authorRanking":null,"authorTier":"contributor","authorType":"topic","forumId":101439,"parentName":"Spam or Not Spam Dataset","parentUrl":"/ozlerhakan/spam-or-not-spam-dataset"},"categories":{"type":"dataset","tags":[{"displayName":"computing","fontAwesomeIcon":"","id":12100,"name":"computing","fullPath":"technology and applied sciences \u003e computing","listingUrl":"/datasets?group=public\u0026tagids=12100","description":"Computing is any goal-oriented activity requiring, benefiting from, or creating a mathematical sequence of steps known as an algorithm.","isInherited":false,"datasetCount":3934,"competitionCount":0,"scriptCount":3,"totalCount":3937,"tagUrl":"/tags/computing"},{"displayName":"email and messaging","fontAwesomeIcon":"","id":16486,"name":"email and messaging","fullPath":"technology and applied sciences \u003e computing \u003e internet \u003e email and messaging","listingUrl":"/datasets?group=public\u0026tagids=16486","description":null,"isInherited":false,"datasetCount":338,"competitionCount":0,"scriptCount":0,"totalCount":338,"tagUrl":"/tags/email-and-messaging"},{"displayName":"binary classification","fontAwesomeIcon":"","id":14201,"name":"binary classification","fullPath":"problem type \u003e binary classification","listingUrl":"/datasets?group=public\u0026tagids=14201","description":null,"isInherited":false,"datasetCount":100,"competitionCount":31,"scriptCount":484,"totalCount":615,"tagUrl":"/tags/binary-classification"}]},"upvoteSuggestion":{"voteCount":10,"medalVoteCount":1,"upVoteUrl":"/ozlerhakan/spam-or-not-spam-dataset/vote","upVoters":[{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"Anava","profileUrl":"/anavan","tier":"Contributor","tierInt":1,"userId":2924230,"userName":"anavan"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/4079756-kg.png","displayName":"macsunmood","profileUrl":"/macsunmood","tier":"Novice","tierInt":0,"userId":4079756,"userName":"macsunmood"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1987627-kg.jpg","displayName":"niten2","profileUrl":"/niten2","tier":"Novice","tierInt":0,"userId":1987627,"userName":"niten2"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/2383329-kg.jpg","displayName":"melodrama","profileUrl":"/merts1","tier":"Novice","tierInt":0,"userId":2383329,"userName":"merts1"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"Diego","profileUrl":"/dononce","tier":"Novice","tierInt":0,"userId":2043758,"userName":"dononce"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"olkainfry","profileUrl":"/olkainfry","tier":"Novice","tierInt":0,"userId":2980772,"userName":"olkainfry"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"Parth Gohil","profileUrl":"/parthgohil","tier":"Novice","tierInt":0,"userId":3281021,"userName":"parthgohil"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/2506944-gp.jpg","displayName":"Thiago Santos","profileUrl":"/stthiago","tier":"Novice","tierInt":0,"userId":2506944,"userName":"stthiago"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"Fatao","profileUrl":"/afatao","tier":"Novice","tierInt":0,"userId":3625316,"userName":"afatao"},{"avatarThumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png","displayName":"Dylan","profileUrl":"/crankycarrot","tier":"Novice","tierInt":0,"userId":3834019,"userName":"crankycarrot"}]},"readerGroupId":null,"writerGroupId":null,"collaborators":{"owner":{"userId":1551213,"groupId":null,"groupMemberCount":null,"profileUrl":"/ozlerhakan","thumbnailUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1551213-gr.jpg","name":"Hakan Ozler","slug":"ozlerhakan","userTier":0,"joinDate":null,"type":"owner","isUser":true,"isGroup":false},"collaborators":[]},"isCollaborator":false,"deletionNeedsReview":false,"hasDatasetDoiApproved":false,"canSeeConfigAsCode":true,"canSeeDatasetTasks":true,"canSeeDatasetHashLink":true,"canSeeDataExplorerV3":false,"medalUrl":null,"datasetHashLink":null,"datasetId":91827,"internalNotes":"","isRemoved":false,"isVersionRemoved":false,"isFeatured":false,"isSuperFeatured":false,"scheduledToBeFeatured":null,"scheduledToBeUnFeatured":null,"scheduledToBeSuperFeatured":null,"scheduledToBeUnSuperFeatured":null,"datasetVersionId":213216,"datasetVersionNumber":1,"lastVersionNumber":1,"datasetUrl":"/ozlerhakan/spam-or-not-spam-dataset","datasetExternalUrl":"https://kaggle.com/ozlerhakan/spam-or-not-spam-dataset","originalImageUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/data-original.jpg?t=2018-12-14-18-43-36","coverImageUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-cover.jpg?t=2018-12-14-18-43-36","cardImageUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-card.jpg?t=2018-12-14-18-43-36","thumbnailImageUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-thumbnail.jpg?t=2018-12-14-18-43-36","license":{"id":12,"name":"Other (specified in description)","description":"Other (specified in description)","url":null,"displaySequence":null},"voteCount":10,"upVoteUrl":"/ozlerhakan/spam-or-not-spam-dataset/vote","creatorUserId":1551213,"creatorDisplayName":"Hakan Ozler","ownerTwitter":null,"lastUpdated":"2018-12-14T18:32:01.29Z","downloadUrl":"/ozlerhakan/spam-or-not-spam-dataset/download","newNotebookUrl":"/kernels/notebooks/new?userName=alexey300479\u0026datasetVersionId=213216","newScriptUrl":"/kernels/scripts/new?userName=alexey300479\u0026datasetVersionId=213216","hasAlreadyVotedUp":false,"isOldDatasetVersion":false,"numberOfViews":5404,"numberOfDownloads":947,"numberOfScripts":12,"numberOfTopics":0,"numberOfTasks":0,"canEdit":false,"canPerformOwnerTasks":false,"canEditSlug":false,"canEditPublishStatus":false,"canEditFeatureStatus":false,"canEditInternalNotes":false,"canEditDescription":false,"hideVersionStatuses":true,"cardImageLeft":781,"cardImageTop":0,"cardImageWidth":3605,"cardImageHeight":3605,"coverImageLeft":0,"coverImageTop":1237,"coverImageWidth":5143,"coverImageHeight":1081,"datasetVersions":[{"id":213216,"slug":"spam-or-not-spam-dataset","name":"Spam or Not Spam Dataset","creationDate":"2018-12-14T18:32:01.29Z","versionNumber":1,"versionNotes":"Initial release","thumbnailImageUrl":"https://storage.googleapis.com/kaggle-datasets-images/91827/213216/00742d2daab9234f1cfc32bf0932333e/dataset-thumbnail.jpg?t=2018-12-14-18-43-36","datasetVersionUrl":"/ozlerhakan/spam-or-not-spam-dataset/version/1","status":"ready","userMessage":null,"isRemoved":false,"creator":{"id":1551213,"imageUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1551213-gr.jpg","isOrganization":false,"name":"Hakan Ozler","profileUrl":"/ozlerhakan","slug":"ozlerhakan","maxFileSizeBytes":null,"userTier":null,"organizationMemberCount":null},"userSpecifiedSources":null,"doi":null}],"datasetVersionTotalCount":1,"contributors":[],"feed":[],"topicId":null,"isNewTopic":false,"canSeeDeletionButton":false,"checklistDismissed":false,"type":"fileset","diffType":"versioned","checklistCollapsed":false,"isInFlight":false,"maintainerOrganization":null,"createdByKernel":null,"usabilityRating":{"score":0.88235295,"columnDescriptionScore":1.0,"coverImageScore":1.0,"fileDescriptionScore":1.0,"fileFormatScore":1.0,"licenseScore":1.0,"overviewScore":1.0,"provenanceScore":0.0,"publicKernelScore":1.0,"subtitleScore":1.0,"tagScore":1.0,"updateFrequencyScore":0.0},"licenseGroups":[{"id":1,"name":"Creative Commons","licenses":[{"id":1,"name":"CC0: Public Domain","description":"CC0: Public Domain \u003ca href=\u0022https://creativecommons.org/publicdomain/zero/1.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/publicdomain/zero/1.0/","displaySequence":1},{"id":3,"name":"CC BY-NC-SA 4.0","description":"CC BY-NC-SA 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-nc-sa/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-nc-sa/4.0/","displaySequence":2},{"id":8,"name":"CC BY-SA 4.0","description":"CC BY-SA 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-sa/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-sa/4.0/","displaySequence":3},{"id":10,"name":"CC BY-SA 3.0","description":"CC BY-SA 3.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-sa/3.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-sa/3.0/","displaySequence":4},{"id":13,"name":"Attribution 4.0 International (CC BY 4.0)","description":"CC-BY 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by/4.0/","displaySequence":5},{"id":14,"name":"Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)","description":"CC-BY-NC 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-nc/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-nc/4.0/","displaySequence":6},{"id":16,"name":"Attribution 3.0 Unported (CC BY 3.0)","description":"CC BY 3.0 \u003ca href=\u0022https://creativecommons.org/licenses/by/3.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by/3.0/","displaySequence":7},{"id":17,"name":"Attribution 3.0 IGO (CC BY 3.0 IGO)","description":"CC BY 3.0 IGO \u003ca href=\u0022https://creativecommons.org/licenses/by/3.0/igo/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by/3.0/igo/","displaySequence":8},{"id":19,"name":"Attribution-NonCommercial-ShareAlike 3.0 IGO (CC BY-NC-SA 3.0 IGO)","description":"CC BY-NC-SA 3.0 IGO \u003ca href=\u0022https://creativecommons.org/licenses/by-nc-sa/3.0/igo/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-nc-sa/3.0/igo/","displaySequence":9},{"id":22,"name":"Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)","description":"CC BY-ND 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-nd/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-nd/4.0/","displaySequence":10},{"id":23,"name":"Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)","description":"CC BY-NC-ND 4.0 \u003ca href=\u0022https://creativecommons.org/licenses/by-nc-nd/4.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://creativecommons.org/licenses/by-nc-nd/4.0/","displaySequence":11}],"displaySequence":1},{"id":2,"name":"GPL","licenses":[{"id":9,"name":"GPL 2","description":"GPL 2 \u003ca href=\u0022http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html","displaySequence":1},{"id":25,"name":"GNU Lesser General Public License 3.0","description":"LGPL 3.0 \u003ca href=\u0022http://www.gnu.org/licenses/lgpl-3.0.html\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"http://www.gnu.org/licenses/lgpl-3.0.html","displaySequence":2},{"id":26,"name":"GNU Affero General Public License 3.0","description":"AGPL 3.0 \u003ca href=\u0022http://www.gnu.org/licenses/agpl-3.0.html\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"http://www.gnu.org/licenses/agpl-3.0.html","displaySequence":3},{"id":27,"name":"GNU Free Documentation License 1.3","description":"FDL 1.3 \u003ca href=\u0022http://www.gnu.org/licenses/fdl-1.3.html\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"http://www.gnu.org/licenses/fdl-1.3.html","displaySequence":4}],"displaySequence":2},{"id":3,"name":"Open Data Commons","licenses":[{"id":5,"name":"Database: Open Database, Contents: Database Contents","description":"Database: Open Database \u003ca href=\u0022http://opendatacommons.org/licenses/odbl/1.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e, Contents: Database Contents \u003ca href=\u0022http://opendatacommons.org/licenses/dbcl/1.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"http://opendatacommons.org/licenses/dbcl/1.0/","displaySequence":1},{"id":6,"name":"Database: Open Database, Contents: © Original Authors","description":"Database: Open Database \u003ca href=\u0022http://opendatacommons.org/licenses/odbl/1.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e, Contents: © Original Authors","url":"http://opendatacommons.org/licenses/odbl/1.0/","displaySequence":2},{"id":15,"name":"ODC Public Domain Dedication and Licence (PDDL)","description":"PDDL  \u003ca href=\u0022https://opendatacommons.org/licenses/pddl/1.0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://opendatacommons.org/licenses/pddl/1.0/","displaySequence":3},{"id":24,"name":"ODC Attribution License (ODC-By)","description":"ODC-BY 1.0 \u003ca href=\u0022https://opendatacommons.org/licenses/by/1-0/index.html\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://opendatacommons.org/licenses/by/1-0/index.html","displaySequence":4}],"displaySequence":3},{"id":6,"name":"Community Data License","licenses":[{"id":20,"name":"Community Data License Agreement - Permissive - Version 1.0","description":"CDLA Permissive 1.0 \u003ca href=\u0022https://cdla.io/permissive-1-0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://cdla.io/permissive-1-0/","displaySequence":1},{"id":21,"name":"Community Data License Agreement - Sharing - Version 1.0","description":"CDLA Sharing 1.0 \u003ca href=\u0022https://cdla.io/sharing-1-0/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://cdla.io/sharing-1-0/","displaySequence":2}],"displaySequence":4},{"id":4,"name":"Special","licenses":[{"id":7,"name":"World Bank Dataset Terms of Use","description":"World Bank Dataset Terms of Use \u003ca href=\u0022https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets","displaySequence":1},{"id":2,"name":"Reddit API Terms","description":"Reddit API Terms \u003ca href=\u0022https://www.reddit.com/wiki/api\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://www.reddit.com/wiki/api","displaySequence":2},{"id":18,"name":"U.S. Government Works","description":"U.S. Government Works \u003ca href=\u0022https://www.usa.gov/government-works/\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://www.usa.gov/government-works/","displaySequence":3},{"id":28,"name":"EU ODP Legal Notice","description":"EU ODP Legal Notice \u003ca href=\u0022https://ec.europa.eu/info/legal-notice_en\u0022 target=\u0022_blank\u0022\u003e\u003cspan class=\u0022fa fa-info-circle\u0022/\u003e\u003c/a\u003e","url":"https://ec.europa.eu/info/legal-notice_en","displaySequence":4}],"displaySequence":5},{"id":5,"name":"Other","licenses":[{"id":11,"name":"Data files © Original Authors","description":"Data files © Original Authors","url":null,"displaySequence":1},{"id":12,"name":"Other (specified in description)","description":"Other (specified in description)","url":null,"displaySequence":2},{"id":4,"name":"Unknown","description":"Unknown","url":null,"displaySequence":3}],"displaySequence":6}],"owners":[{"id":3578092,"imageUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/3578092-kg.png","isOrganization":false,"name":"Alexey Kiselev","profileUrl":"/alexey300479","slug":"alexey300479","maxFileSizeBytes":null,"userTier":null,"organizationMemberCount":null},{"id":1551213,"imageUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1551213-gr.jpg","isOrganization":false,"name":"Hakan Ozler","profileUrl":"/ozlerhakan","slug":"ozlerhakan","maxFileSizeBytes":null,"userTier":0,"organizationMemberCount":null}],"referrer":null,"convertToStandardCsvFormat":false,"overview":"A collection of emails taking from spamassassin.apache.org ","description":"### Context\n\nThe collection consists of \u00270030228_easy_ham.tar.bz2\u0027 and \u002720030228_spam.tar.bz2\u0027 taking from https://spamassassin.apache.org/old/publiccorpus/ i.e. _Apache SpamAssassin’s public datasets_.  There are 2500 ham and 500 spam emails in the dataset. You may also notice that all the numbers and URLs were converted to strings as  `NUMBER` and `URL`  respectively.  This is the simplified spam and ham dataset.\n\n### Acknowledgements\n\nMy first interaction about the content was on the \u0027Machine Learning and Deep Learning in python using Scikit-Learn and TensorFlow\u0027 book. If you follow the questions at the end of Chapter 3, Aurélien Geron asks you to build a spam classifier using this dataset. Thanks to Aurélien, I was familiar with the data itself and tried several models including Embeddings and Machine Learning Algorithms. \n","actions":[],"flags":[],"title":"Spam or Not Spam Dataset","slug":"spam-or-not-spam-dataset","licenseId":12,"data":{"id":224696,"databundleId":101858,"databundleVersionType":"fileset","databundleDiffType":"versioned","versionNumber":1,"zipBlobFileId":null,"totalSize":4256112,"ownerInfo":{"databundleVersionId":224696,"dataset":{"datasetId":91827,"datasetVersionId":213216,"dataviewToken":"eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..F9zHrlj3vDCm9DOd-NXnBw.kEMDrldcsgsrOEO95itvGp7OmkooOrlLbCHkBewSon-rTQP-LEgs9ZcRoei_Zh3jvq-JzkeDredooF-1LpLo88qPFyK2oRxGtSiIOls2Yah5mLklLFiMUOs55tG6aeX4HeM3HmKVWdBfzpcVbvsfnCIGsjlBrJUIPFPOzWrT4NHMdL20UMPM5mp95JQABEcf7zi-gJPNXPCaKU663pfW-BJNFAeGah1JDUVYzGi2ANtW8xTEQvkW4V2bQfbnuuRcS2TBFJ1hzf-fw81mO_ga7-4g1rp8n2KudEPPECjd8rQLdmVN2pIUHphVToX9L89ipkGSDddPHhK3CYK_EYgZGjyv8Lj57LZpCyU1xX-uicMgUD-KzLVW80pa0ubxcBCaaayK1xm6ZKPAB2ICe0mSkfIjvBpsQcsmslrCe0hHaRGgTB-vtulu5rBRqiNMkvkIiGxbcKSbJX4iW56T2XfhBf2uLQUpJCa-81GiczDRjXGS33vP4k7d00D7c4HNbl04lcX6q3S-EBRs7r_cHg7WT7z8V7TqgciDcuiUeSjnSI8.0i4cQss4BZwgBho1lcAM3g","scope":"ozlerhakan/spam-or-not-spam-dataset"},"competition":null,"kernel":null,"previewsDisabled":false},"usesArchiveV2":true,"hasBundleDownload":true,"type":"databundleVersion","collapsed":false,"info":{"metrics":null,"archiveInfo":null,"archiveInfoV2":null,"blobFileInfo":null,"convertCsvInfo":null,"kernelReference":null},"settings":{"csvSettings":null,"bigQuerySettings":null,"bigQueryMirrorSettings":null,"storageSettings":{"webDataLocation":{"bucket":"kaggle-data-sets","path":"91827/213216/upload"},"sdsDataLocation":{"bucket":"kagglesdsdata","path":"datasets/91827/213216"},"responseDataLocation":null},"remoteUrlSettings":null,"remoteGithubSettings":null},"render":null,"totalChildren":1,"children":[{"id":0,"blobFileId":0,"databundleVersionId":224696,"databundleVersionObjectType":"file","url":null,"relativePath":"spam_or_not_spam.csv","creationDate":null,"isDummy":false,"size":4256112,"fullPath":"spam_or_not_spam.csv","previewUrl":null,"downloadUrl":"/ozlerhakan/spam-or-not-spam-dataset/download/HqbK5W1EpoAqZ6IeMuWx%2Fversions%2Fu8meS80aEBYjvv7itnBL%2Ffiles%2Fspam_or_not_spam.csv?datasetVersionNumber=1","fileType":".csv","contentLength":4256112,"contentType":"text/csv","contentMD5":"VC/NqWi/U9ngHnHDTBgMsw==","validationErrors":null,"type":"databundleVersionObject","collapsed":false,"info":{"metrics":null,"archiveInfo":null,"archiveInfoV2":null,"blobFileInfo":null,"convertCsvInfo":null,"kernelReference":null},"settings":{"csvSettings":null,"bigQuerySettings":null,"bigQueryMirrorSettings":null,"storageSettings":null,"remoteUrlSettings":null,"remoteGithubSettings":null},"render":null,"totalChildren":2,"children":[{"columns":[{"order":0,"originalType":"","type":"string","extendedType":null,"isNullable":null,"isPrimaryKey":null,"isLabel":null,"info":{"metrics":{"counts":[{"key":"url URL date not supplied URL ","value":10},{"key":"lowest rates available for term life insurance take a moment and fill out our online form to see the low rate you qualify for save up to NUMBER from regular rates smokers accepted URL representing quality nationwide carriers act now to easily remove your address from the list go to URL please allow NUMBER NUMBER hours for removal ","value":5},{"key":" otc newsletter discover tomorrow s winners for immediate release cal bay stock symbol cbyi watch for analyst strong buy recommendations and several advisory newsletters picking cbyi cbyi has filed to be traded on the otcbb share prices historically increase when companies get listed on this larger trading exchange cbyi is trading around NUMBER cents and should skyrocket to NUMBER NUMBER NUMBER NUMBER a share in the near future put cbyi on your watch list acquire a position today reasons to invest in cbyi a profitable company and is on track to beat all earnings estimates one of the fastest growing distributors in environmental safety equipment instruments excellent management team several exclusive contracts impressive client list including the u s air force anheuser busch chevron refining and mitsubishi heavy industries ge energy environmental research rapidly growing industry industry revenues exceed NUMBER million estimates indicate that there could be as much as NUMBER billion from smell technology by the end of NUMBER congratulations our last recommendation to buy orbt at NUMBER NUMBER rallied and is holding steady at NUMBER NUMBER congratulations to all our subscribers that took advantage of this recommendation all removes honored please allow NUMBER days to be removed and send all addresses to hyperlink goneforgood URL certain statements contained in this news release may be forward looking statements within the meaning of the private securities litigation reform act of NUMBER these statements may be identified by such terms as expect believe may will and intend or similar terms we are not a registered investment advisor or a broker dealer this is not an offer to buy or sell securities no recommendation that the securities of the companies profiled should be purchased sold or held by individuals or entities that learn of the profiled companies we were paid NUMBER NUMBER in cash by a third party to publish this report investing in companies profiled is high risk and use of this information is for reading purposes only if anyone decides to act as an investor then it will be that investor s sole risk investors are advised not to invest without the proper advisement from an attorney or a registered financial broker do not rely solely on the information presented do additional independent research to form your own opinion and decision regarding investing in the profiled companies be advised that the purchase of such high risk securities may result in the loss of your entire investment not intended for recipients or residents of ca co ct de id il ia la mo nv nc ok oh pa ri tn va wa wv wi void where prohibited the owners of this publication may already own free trading shares in cbyi and may immediately sell all or a portion of these shares into the open market at or about the time this report is published factual statements are made as of the date stated and are subject to change without notice copyright c NUMBER otc ","value":5},{"key":"url URL date NUMBER NUMBER NUMBERtNUMBER NUMBER NUMBER NUMBER NUMBER you are not still using sourceforge are you if you have any hopes that they are anything but yet another business giving away a free service then see this selling microsoft visualstudio on the open source development platform nice touch click on the image for the original screenshot ","value":4},{"key":"url URL date NUMBER NUMBER NUMBERtNUMBER NUMBER NUMBER NUMBER NUMBER yesterday viridiana came to my place and dragged me out to look at the sky it was beautiful odd colors and light obviously we wondered what it was today jim explains it it was a rocket test from the vandenburg air force base very neat it was a bit too blurred out when i saw it and there was too much street light to make a good photo so i am happy to have found the photo from nasa ","value":4}],"uniqueValueCount":2872,"mostCommonValue":"url URL date not supplied URL ","mostCommonValueCount":10,"column":{"order":0,"originalType":null,"type":"string","extendedType":null,"isNullable":null,"isPrimaryKey":null,"isLabel":null,"info":null,"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL/files/spam_or_not_spam.csv/columns/kd2np5O67c8eyMveluw7","firestoreKey":"kd2np5O67c8eyMveluw7","name":"email","description":null},"type":"string","extendedType":null,"exception":null,"nullCount":1,"nonNullCount":2999,"validCount":2999,"invalidCount":0}},"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL/files/spam_or_not_spam.csv/columns/kd2np5O67c8eyMveluw7","firestoreKey":"kd2np5O67c8eyMveluw7","name":"email","description":"email"},{"order":1,"originalType":"","type":"numeric","extendedType":"integer","isNullable":null,"isPrimaryKey":null,"isLabel":null,"info":{"metrics":{"finiteCount":3000,"infiniteCount":0,"mean":0.16666666666666666,"standardDeviation":0.3726779962499674,"minimum":0.0,"minimumFinite":0.0,"maximum":1.0,"maximumFinite":1.0,"quantiles":[{"point":0.25,"value":0.0},{"point":0.5,"value":0.0},{"point":0.75,"value":0.0}],"histogram":{"buckets":[{"index":0,"label":"0.00 - 0.10","leftValue":"-Infinity","rightValue":0.1,"count":2500},{"index":1,"label":"0.10 - 0.20","leftValue":0.1,"rightValue":0.2,"count":0},{"index":2,"label":"0.20 - 0.30","leftValue":0.2,"rightValue":0.30000000000000004,"count":0},{"index":3,"label":"0.30 - 0.40","leftValue":0.30000000000000004,"rightValue":0.4,"count":0},{"index":4,"label":"0.40 - 0.50","leftValue":0.4,"rightValue":0.5,"count":0},{"index":5,"label":"0.50 - 0.60","leftValue":0.5,"rightValue":0.6000000000000001,"count":0},{"index":6,"label":"0.60 - 0.70","leftValue":0.6000000000000001,"rightValue":0.7000000000000001,"count":0},{"index":7,"label":"0.70 - 0.80","leftValue":0.7000000000000001,"rightValue":0.8,"count":0},{"index":8,"label":"0.80 - 0.90","leftValue":0.8,"rightValue":0.9,"count":0},{"index":9,"label":"0.90 - 1.00","leftValue":0.9,"rightValue":"Infinity","count":500}],"type":"string"},"column":{"order":1,"originalType":null,"type":"numeric","extendedType":"integer","isNullable":null,"isPrimaryKey":null,"isLabel":null,"info":null,"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL/files/spam_or_not_spam.csv/columns/R8HYyaabJRWHVO5pM2q4","firestoreKey":"R8HYyaabJRWHVO5pM2q4","name":"label","description":null},"type":"numeric","extendedType":"integer","exception":null,"nullCount":0,"nonNullCount":3000,"validCount":3000,"invalidCount":0}},"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL/files/spam_or_not_spam.csv/columns/R8HYyaabJRWHVO5pM2q4","firestoreKey":"R8HYyaabJRWHVO5pM2q4","name":"label","description":"if an email is spam, 1 otherwise 0."}],"totalRows":3000,"type":"genericTable","collapsed":false,"info":null,"settings":null,"render":null,"totalChildren":0,"children":[],"firestorePath":null,"firestoreKey":null,"name":"","description":null}],"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL/files/spam_or_not_spam.csv","firestoreKey":"spam_or_not_spam.csv","name":"spam_or_not_spam.csv","description":"emails and labels"}],"firestorePath":"HqbK5W1EpoAqZ6IeMuWx/versions/u8meS80aEBYjvv7itnBL","firestoreKey":"u8meS80aEBYjvv7itnBL","name":"Spam or Not Spam Dataset","description":"### Context\n\nThe collection consists of \u00270030228_easy_ham.tar.bz2\u0027 and \u002720030228_spam.tar.bz2\u0027 taking from https://spamassassin.apache.org/old/publiccorpus/ i.e. _Apache SpamAssassin’s public datasets_.  There are 2500 ham and 500 spam emails in the dataset. You may also notice that all the numbers and URLs were converted to strings as  `NUMBER` and `URL`  respectively.  This is the simplified spam and ham dataset.\n\n### Acknowledgements\n\nMy first interaction about the content was on the \u0027Machine Learning and Deep Learning in python using Scikit-Learn and TensorFlow\u0027 book. If you follow the questions at the end of Chapter 3, Aurélien Geron asks you to build a spam classifier using this dataset. Thanks to Aurélien, I was familiar with the data itself and tried several models including Embeddings and Machine Learning Algorithms. \n"},"isPrivate":false,"owner":{"id":1551213,"imageUrl":"https://storage.googleapis.com/kaggle-avatars/thumbnails/1551213-gr.jpg","isOrganization":false,"name":"Hakan Ozler","profileUrl":"/ozlerhakan","slug":"ozlerhakan","maxFileSizeBytes":null,"userTier":0,"organizationMemberCount":null}});performance && performance.mark && performance.mark("DatasetContainer.componentCouldBootstrap");</script><script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+    preferredFont: "TeX",
+    availableFonts: ["STIX", "TeX"],
+    linebreaks: {
+    automatic: true
+    },
+    EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+    inlineMath: [["\\(", "\\)"], ["\\\\(", "\\\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+    processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno"
+    },
+    TeX: {
+    noUndefined: {
+    attributes: {
+    mathcolor: "red",
+    mathbackground: "#FFEEEE",
+    mathsize: "90%"
+    }
+    }
+    },
+    Macros: {
+    href: "{}"
+    },
+    skipStartupTypeset: true,
+    messageStyle: "none"
+    });
+</script>
+<script nonce="r22ki5hLl0HJGMGKa4b99A==" type="text/javascript" async crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</div>
+
+
+
+    <!-- Cheers, web-79f777c8f9-jhgx4p. -->
+
+    </main>
+</body>
+</html>
