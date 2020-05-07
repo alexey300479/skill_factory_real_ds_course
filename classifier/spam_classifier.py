@@ -1,73 +1,28 @@
-import json
+import numpy as np
 import pandas as pd
 import string
-
 
 SPAM = True
 NOT_SPAM = False
 
-# Пробуем открыть файл со справочником слов, встречаемых в спам-текстах
-try:
-    spam_words = json.load('spam_words.json')
-# Если такого файла еще нет, то создаем пустой справочник
-except:
-    spam_words = dict()
+spam_words = dict()
 
-# Пробуем открыть файл со справочником слов, встречаемых в хороших текстах
-try:
-    good_words = json.load('good_words.json')
-# Если такого файла еще нет, то создаем пустой справочник
-except:
-    good_words = dict()
+good_words = dict()
 
-# Пробуем открыть файл со счетчиками слов
-try:
-    words_count = json.load('words_count.json')
-# Если такого файла еще нет, то создаем справочник с нулевыми значениями
-except:
-    words_count = {
-        'spam': 0,
-        'good': 0
-    }
-
-# Пробуем открыть файл с вероятностями
-try:
-    probs = json.load('probs.json')
-# Если такого файла еще нет, то создаем справочник с нулевыми значениями
-except:
-    probs = {
-        'spam_texts_count': 0,
-        'good_texts_count': 0,
-        'pA': 0,
-        'pNotA': 0,
-    }
-
-# train_data = [  
-#     ['Купите новое чистящее средство', SPAM],   
-#     ['Купи мою новую книгу', SPAM],  
-#     ['Подари себе новый телефон', SPAM],
-#     ['Добро пожаловать и купите новый телевизор', SPAM],
-#     ['Привет давно не виделись', NOT_SPAM], 
-#     ['Довезем до аэропорта из пригорода всего за 399 рублей', SPAM], 
-#     ['Добро пожаловать в Мой Круг', NOT_SPAM],  
-#     ['Я все еще жду документы', NOT_SPAM],  
-#     ['Приглашаем на конференцию Data Science', NOT_SPAM],
-#     ['Потерял твой телефон напомни', NOT_SPAM],
-#     ['Порадуй своего питомца новым костюмом', SPAM]
-# ]
-
-# Загружаем тренировочный датасет
-train_data = pd.read_csv('spam_or_not_spam.csv')
-
-# Удаляем единственную пустую строку
-train_data.dropna(inplace=True)
-
-# Приводим разметку к единому стилю
-labels = {
-    0: NOT_SPAM,
-    1: SPAM
+words_count = {
+    'spam': 0,
+    'good': 0
 }
-train_data['label'] = train_data['label'].map(labels)
+
+probs = {
+    'spam_texts_count': 0,
+    'good_texts_count': 0,
+    'pA': 0,
+    'pNotA': 0,
+}
+
+train_data = pd.read_csv('spam_or_not_spam.csv')
+train_data.dropna(inplace=True)
 
 # Создадим функцию, приводящую текст к нижнему регистру и очищающую его от знаков пунктуации
 def get_words(text):
@@ -87,6 +42,7 @@ def get_words(text):
     words = clean_text.split()
     return words
 
+# Создадим функцию, заполняющие справочники со счетчиками слов
 def calculate_word_frequencies(body, label):
     '''
         Функция calculate_word_frequencies(body, label) заполняет словари
@@ -133,41 +89,44 @@ def calculate_word_frequencies(body, label):
             except:
                 good_words[word] = 1    
 
-def train():
-    converted_data = zip(train_data['email'], train_data['label'])
-
+#  Создадим функцию, обучающую нашу модель на тенировочной выборке
+def train(train_data):
     # Заполним справочники
-    for data in converted_data:
+    for data in train_data:
         calculate_word_frequencies(*data)
     
     # Вычислим вероятности
     texts_count = probs['spam_texts_count'] + probs['good_texts_count']
-    probs['pA'] = probs['spam_texts_count'] / texts_count
-    probs['pNotA'] = probs['good_texts_count'] / texts_count
+    probs['pA'] = np.longdouble(probs['spam_texts_count']) / np.longdouble(texts_count)
+    probs['pNotA'] = np.longdouble(probs['good_texts_count']) / np.longdouble(texts_count)
 
+# Произведем обучение
+train(zip(train_data['email'], train_data['label']))
+
+# Создадим функцию, рассчитывающую вероятность того, что слово word может встретиться в спаме или нормальном сообщении
 def calculate_P_Bi_A(word, label):
     '''
         Функция calculate_P_Bi_A(word, label) возвращает вероятность того,
         что слово word встретится в сообщении содержащем спам, при label == SPAM,
         или вероятность того, что слово встретится в сообщении не содержащем спам,
-        при label != SPAM
+        при label == NOT_SPAM
     '''
     if label == SPAM:
         try:
             word_count = spam_words[word]
-        except KeyError:
-            word_count = 1
-            # spam_words[word] = 1
-            # words_count['spam'] += 1
-        return word_count / words_count['spam']
+        except:
+#             word_count = 0.00001
+            word_count = 0
+        return np.longdouble(1+ word_count) / (np.longdouble(len(spam_words)) + np.longdouble(words_count['spam']))
+#         return np.longdouble(word_count) / np.longdouble(words_count['spam'])
     else:
         try:
             word_count = good_words[word]
-        except KeyError:
-            word_count = 1
-            # good_words[word] = 1
-            # words_count['good'] += 1
-        return word_count / words_count['good']
+        except:
+#             word_count = 0.00001
+            word_count = 0
+        return np.longdouble(1+word_count) / (np.longdouble(len(good_words)) + np.longdouble(words_count['good']))
+#         return np.longdouble(word_count) / np.longdouble(words_count['good'])
 
 def calculate_P_B_A(text, label):
     '''
@@ -177,15 +136,16 @@ def calculate_P_B_A(text, label):
     # Сначала получим список слов
     words = get_words(text)
     
-    prob = 1.0
+    # Вычисляем общую вероятность перемножением вероятностей по каждому слову
+    # Что равнозначно сложению натуральных логарифмов вероятностей
+    prob_ln = np.longdouble(0)
     for word in words:
-        prob *= (1.0 + calculate_P_Bi_A(word, label))
+        prob_ln += np.log(calculate_P_Bi_A(word, label))
     
-    return prob
+    return prob_ln
 
+# Создадим функцию классификации, возвращающую True, если текст относится к спаму и False в противном случае
 def classify(email):
-    spam_prob = calculate_P_B_A(email, SPAM)
-    not_spam_prob = calculate_P_B_A(email, NOT_SPAM)
-    print(f'Spam probability is: {spam_prob}')
-    print(f'Not spam probability is: {not_spam_prob}')
-    return spam_prob > not_spam_prob
+    spam_prob_ln = calculate_P_B_A(email, SPAM) + np.log(np.longdouble(probs['pA']))
+    not_spam_prob_ln = calculate_P_B_A(email, NOT_SPAM) + np.log(np.longdouble(probs['pNotA']))
+    return spam_prob_ln > not_spam_prob_ln

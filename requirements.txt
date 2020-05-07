@@ -8,6 +8,7 @@ asn1crypto==1.3.0
 astroid==2.3.3
 astropy==4.0
 atomicwrites==1.3.0
+attr==0.3.1
 attrs==19.3.0
 Automat==0.8.0
 Babel==2.8.0
@@ -39,6 +40,7 @@ conda==4.8.2
 conda-build==3.18.9
 conda-package-handling==1.6.0
 conda-verify==3.4.2
+confuse==1.0.0
 constantly==15.1.0
 contextlib2==0.6.0.post1
 cryptography==2.8
@@ -77,6 +79,7 @@ greenlet==0.4.15
 h5py==2.10.0
 HeapDict==1.0.1
 html5lib==1.0.1
+htmlmin==0.1.12
 hyperlink==19.0.0
 hypothesis==5.5.4
 idna==2.8
@@ -116,6 +119,7 @@ lxml==4.5.0
 MarkupSafe==1.1.1
 matplotlib==3.1.3
 mccabe==0.6.1
+missingno==0.4.2
 mistune==0.8.4
 mkl-fft==1.0.15
 mkl-random==1.1.0
@@ -142,7 +146,8 @@ olefile==0.46
 openpyxl==3.0.3
 osqp==0.6.1
 packaging==20.1
-pandas==1.0.1
+pandas==0.25.3
+pandas-profiling==2.5.0
 pandocfilters==1.4.2
 parsel==1.5.2
 parso==0.6.1
@@ -152,6 +157,7 @@ pathlib2==2.3.5
 patsy==0.5.1
 pep8==1.7.1
 pexpect==4.8.0
+phik==0.9.9
 pickleshare==0.7.5
 Pillow==7.0.0
 pkginfo==1.5.0.1
@@ -192,6 +198,7 @@ pytest-astropy==0.8.0
 pytest-astropy-header==0.1.2
 pytest-doctestplus==0.5.0
 pytest-openfiles==0.4.0
+pytest-pylint==0.15.1
 pytest-remotedata==0.3.2
 pytest-runner==5.2
 python-dateutil==2.8.1
@@ -244,18 +251,20 @@ SQLAlchemy==1.3.13
 statsmodels==0.11.0
 sympy==1.5.1
 tables==3.6.1
+tangled-up-in-unicode==0.0.3
 tblib==1.6.0
 terminado==0.8.3
 testpath==0.4.4
 text-unidecode==1.3
 toolz==0.10.0
 tornado==6.0.3
-tqdm==4.42.1
+tqdm==4.42.0
 traitlets==4.3.3
 Twisted==19.10.0
 typed-ast==1.4.1
 unicodecsv==0.14.1
 urllib3==1.24.3
+visions==0.2.2
 w3lib==1.21.0
 wcwidth==0.1.8
 webencodings==0.5.1
