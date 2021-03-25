@@ -206,7 +206,7 @@ python-slugify==4.0.0
 python-telegram-bot==12.4.2
 pytz==2019.3
 PyWavelets==1.1.1
-PyYAML==5.3
+PyYAML==5.4
 pyzmq==18.1.1
 QtAwesome==0.6.1
 qtconsole==4.6.0
